@@ -11,7 +11,7 @@ export const help = async (args: string[]): Promise<string> => {
     if (i % 7 === 0) {
       c += Object.keys(bin).sort()[i - 1] + '\n';
     } else {
-      c += Object.keys(bin).sort()[i - 1] + ' ';
+      c += Object.keys(bin).sort()[i - 1] + '\n';
     }
   }
   return `Welcome! Here are all the available commands:
@@ -30,8 +30,9 @@ export const repo = async (args: string[]): Promise<string> => {
 
 // About
 export const about = async (args: string[]): Promise<string> => {
-  return `Hi, I am ${config.name}. 
-Welcome to my website!
+  return `Hi, I am ${config.name} from India. 
+Welcome to my website! 
+
 More about me:
 'sumfetch' - short summary.
 'resume' - my latest resume.
@@ -43,12 +44,12 @@ export const resume = async (args: string[]): Promise<string> => {
   return 'Opening resume...';
 };
 
-// Donate
-export const donate = async (args: string[]): Promise<string> => {
-  return `thank you for your interest. 
-here are the ways you can support my work:
-- <u><a class="text-light-blue dark:text-dark-blue underline" href="${config.donate_urls.paypal}" target="_blank">paypal</a></u>
-- <u><a class="text-light-blue dark:text-dark-blue underline" href="${config.donate_urls.patreon}" target="_blank">patreon</a></u>
+// Socials
+export const social = async (args: string[]): Promise<string> => {
+  return `Currently I am active on the following social media :
+- <u><a class="text-light-blue dark:text-dark-blue underline" href="${config.social_media.facebook}" target="_blank">Facebook</a></u>
+- <u><a class="text-light-blue dark:text-dark-blue underline" href="${config.social_media.twitter}" target="_blank">Twitter</a></u>
+- <u><a class="text-light-blue dark:text-dark-blue underline" href="${config.social_media.instagram}" target="_blank">Instagram</a></u>
 `;
 };
 
@@ -97,7 +98,7 @@ export const echo = async (args: string[]): Promise<string> => {
 };
 
 export const whoami = async (args: string[]): Promise<string> => {
-  return `${config.ps1_username}`;
+  return `You are ${config.ps1_username}`;
 };
 
 export const ls = async (args: string[]): Promise<string> => {
@@ -111,6 +112,10 @@ directories`;
 export const cd = async (args: string[]): Promise<string> => {
   return `unfortunately, i cannot afford more directories.
 if you want to help, you can type 'donate'.`;
+};
+
+export const mkdir = async (args: string[]): Promise<string> => {
+  return `Permission denied! You can't make directory here.`;
 };
 
 export const date = async (args: string[]): Promise<string> => {
@@ -141,15 +146,20 @@ export const sudo = async (args?: string[]): Promise<string> => {
 // Banner
 export const banner = (args?: string[]): string => {
   return `
-█████        ███                       ███████████                                   
-░░███        ░░░                       ░█░░░███░░░█                                   
- ░███        ████  █████ █████  ██████ ░   ░███  ░   ██████  ████████  █████████████  
- ░███       ░░███ ░░███ ░░███  ███░░███    ░███     ███░░███░░███░░███░░███░░███░░███ 
- ░███        ░███  ░███  ░███ ░███████     ░███    ░███████  ░███ ░░░  ░███ ░███ ░███ 
- ░███      █ ░███  ░░███ ███  ░███░░░      ░███    ░███░░░   ░███      ░███ ░███ ░███ 
- ███████████ █████  ░░█████   ░░██████     █████   ░░██████  █████     █████░███ █████
-░░░░░░░░░░░ ░░░░░    ░░░░░     ░░░░░░     ░░░░░     ░░░░░░  ░░░░░     ░░░░░ ░░░ ░░░░░ 
+  ██████╗  █████╗ ███╗   ███╗ █████╗     ██╗   ██╗ █████╗ ████████╗███████╗
+  ██╔══██╗██╔══██╗████╗ ████║██╔══██╗    ██║   ██║██╔══██╗╚══██╔══╝██╔════╝
+  ██████╔╝███████║██╔████╔██║███████║    ██║   ██║███████║   ██║   ███████╗
+  ██╔══██╗██╔══██║██║╚██╔╝██║██╔══██║    ╚██╗ ██╔╝██╔══██║   ██║   ╚════██║
+  ██║  ██║██║  ██║██║ ╚═╝ ██║██║  ██║     ╚████╔╝ ██║  ██║   ██║   ███████║
+  ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝      ╚═══╝  ╚═╝  ╚═╝   ╚═╝   ╚══════╝
+                                                                           
 
+
+Hello ${config.ps1_username}, welcome to my website.
+
+
+Type 'about' to see a very short info about me.
+Type 'social' to see my active social media accounts.
 Type 'help' to see the list of available commands.
 Type 'sumfetch' to display summary.
 Type 'repo' or click <u><a class="text-light-blue dark:text-dark-blue underline" href="${config.repo}" target="_blank">here</a></u> for the Github repository.
